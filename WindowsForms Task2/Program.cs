@@ -26,7 +26,12 @@ namespace WindowsForms_Task2
         public static void JSONSerialization(in User user)
         {
             var serializer = new JsonSerializer();
-
+            
+             if (!System.IO.Directory.Exists("Database"))
+              {
+                System.IO.Directory.CreateDirectory("Database");
+              }
+            
             using (var sw = new StreamWriter($"Database/{user.Username}.json"))
             {
                 using (var jw = new JsonTextWriter(sw))
